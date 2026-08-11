@@ -1,0 +1,17 @@
+[project]
+name = "verify-repvit-sam"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.2",
+    "opencv-python-headless>=5.0.0.93",
+    "pillow>=12.3.0",
+    "repvit-sam",
+    "timm==0.9.16",
+    "torch>=2.13.0",
+    "torchvision>=0.28.0",
+]
+
+[tool.uv.sources]
+repvit-sam = { path = "../sam", editable = true }
