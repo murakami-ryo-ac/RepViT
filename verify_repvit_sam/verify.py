@@ -1,12 +1,12 @@
+import os
 import time
 
 import numpy as np
 import torch
-from PIL import Image
 
 from repvit_sam import SamPredictor, sam_model_registry
 
-CHECKPOINT = "/Users/user/Documents/study/texture/fastsam/weights/repvit_sam.pt"
+CHECKPOINT = os.environ.get("REPVIT_SAM_CHECKPOINT", "/weights/repvit_sam.pt")
 
 print("torch:", torch.__version__, "device: cpu")
 
