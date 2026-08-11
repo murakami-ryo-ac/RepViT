@@ -5,10 +5,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 ARG REPO_URL=https://github.com/murakami-ryo-ac/RepViT.git
-ARG REPO_REF=main
+ARG REPO_REF=a16ddf707f487e761f182498bc67b35db50f1eb5
 
 WORKDIR /app
-RUN git clone --depth 1 --branch ${REPO_REF} ${REPO_URL} RepViT
+RUN git init RepViT \
+ && cd RepViT \
+ && git remote add origin ${REPO_URL} \
+ && git fetch --depth 1 origin ${REPO_REF} \
+ && git checkout FETCH_HEAD
 
 WORKDIR /app/RepViT/verify_repvit_sam
 ENV UV_PROJECT_ENVIRONMENT=/app/RepViT/verify_repvit_sam/.venv
